@@ -9,7 +9,7 @@ namespace Q_Learning
     class RandomPlayer
     {
         Board board;
-        Random rand;
+        Random rand = new Random();
         int x, y, player;
         int[,] tempBoard;
 
@@ -21,7 +21,6 @@ namespace Q_Learning
         public void Play()
         {
             tempBoard = board.getTempBoard();
-            rand = new Random();
 
             while (tempBoard[x, y] != 0)
             {
