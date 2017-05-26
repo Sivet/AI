@@ -36,8 +36,8 @@ namespace Q_Learning
             {
                 Q_Node Qnode = new Q_Node(board.getHashedBoard(), board.getPossibleMoves(playerMe));
                 MoveBank.Add(board.getHashedBoard(), Qnode);
-                board.placeBrick(Qnode.possibleMoves[Rando.Next(0, Qnode.possibleMoves.Count())]);
-                ActionsTaken.Add(Qnode.possibleMoves[Rando.Next(0, Qnode.possibleMoves.Count())]);
+                board.placeBrick(Qnode.possibleMoves[Rando.Next(0, Qnode.possibleMoves.Count)]);
+                ActionsTaken.Add(Qnode.possibleMoves[Rando.Next(0, Qnode.possibleMoves.Count)]);
             }
         }
         private void Clear()
