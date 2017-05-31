@@ -37,7 +37,7 @@ namespace XOR_NeuralNetwork
             output[2] = 0.9; //0-1 = true
             output[3] = 0.01; //0-0 = false
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 200; i++)
             {
                 PrintOut(input[0], output[0]);
                 PrintOut(input[1], output[1]);

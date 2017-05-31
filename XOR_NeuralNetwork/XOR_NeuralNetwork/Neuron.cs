@@ -25,12 +25,10 @@ namespace XOR_NeuralNetwork
 
             foreach (Connection item in Input)
             {
-                Output += item.Input.Output * item.Weight;
+                Sum += item.Input.Output * item.Weight;
             }
-            Output += Bias;
-            Sum = Output;
-
-            Output = ActivateFunction(Output);
+            Sum = Sum + Bias;
+            Output = ActivateFunction(Sum);
         }
         public double ActivateFunction(double value) //Sigmoid
         {
