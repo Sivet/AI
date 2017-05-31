@@ -26,7 +26,7 @@ namespace XOR_NeuralNetwork
             deltaWeightToOutput = new double[net.OutputLayer.neurons[0].Input.Count];
 
             //Udregn outer til hidden weights
-            deltaOutputSum = SigmoidDerivative(net.OutputLayer.neurons[0].Sum) * error;
+            deltaOutputSum = SigmoidDerivative(net.OutputLayer.neurons[0].Sum) * (error);
             for (int i = 0; i < net.OutputLayer.neurons[0].Input.Count; i++)
             {
                 deltaWeightToOutput[i] = deltaOutputSum * net.HiddenLayer.neurons[i].Output;

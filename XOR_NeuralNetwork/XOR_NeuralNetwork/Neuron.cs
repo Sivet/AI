@@ -34,7 +34,7 @@ namespace XOR_NeuralNetwork
         }
         public double ActivateFunction(double value) //Sigmoid
         {
-            return (1 / (1 + Math.Exp(-(value))));
+            return 1.0f / (1.0f + (float)Math.Exp(-value));
         }
         public double GetOutput()
         {

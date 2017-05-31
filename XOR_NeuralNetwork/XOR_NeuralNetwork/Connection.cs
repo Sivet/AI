@@ -16,7 +16,7 @@ namespace XOR_NeuralNetwork
             this.Input = Input;
             this.Weight = Weight;
         }
-        public void AdjustWeight(double adjustment) //skal have noget og udregne mængden den skal ændre sin weight
+        public void AdjustWeight(double adjustment)
         {
             Weight += adjustment;
         }
