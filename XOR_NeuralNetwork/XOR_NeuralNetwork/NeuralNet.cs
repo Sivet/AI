@@ -30,13 +30,13 @@ namespace XOR_NeuralNetwork
             int i, j;
 
             for (i = 0; i < inputNeurons; i++)
-                InputLayer.neurons.Add(new Neuron(0));
+                InputLayer.neurons.Add(new Neuron(0, 0.5));
 
             for (i = 0; i < hiddenNeurons; i++)
-                HiddenLayer.neurons.Add(new Neuron(rand.NextDouble()));
+                HiddenLayer.neurons.Add(new Neuron(rand.NextDouble(), 0.5));
 
             for (i = 0; i < outputNeurons; i++)
-                OutputLayer.neurons.Add(new Neuron(rand.NextDouble()));
+                OutputLayer.neurons.Add(new Neuron(rand.NextDouble(), 0.5));
 
             //Wire input together with the hidden layer
             for (i = 0; i < HiddenLayer.neurons.Count; i++)

@@ -15,7 +15,7 @@ namespace XOR_NeuralNetwork
         public double[] deltaWeightToOutput { get; set; }
         public double[] deltaWeightToHidden { get; set; }
 
-        public void Train(double targetvalue, NeuralNet net)
+        public void TrainAttempt1(double targetvalue, NeuralNet net)
         {
             this.net = net;
             
@@ -72,6 +72,72 @@ namespace XOR_NeuralNetwork
             }
 
         }
+        public void TrainAttempt2(int testNeuron, double targetOutput, NeuralNet net)
+        {
+            this.net = net;
+            CalculateOutputError(testNeuron, targetOutput);
+        }
+        private void CalculateOutputError(int testNeuron, double targetOutput)
+        {
+            net.OutputLayer.neurons[testNeuron].Error = targetOutput - net.OutputLayer.neurons[testNeuron].Output;
+
+            for (int i = 0; i < net.OutputLayer.neurons.Count; i++)
+            {
+                if (i == testNeuron)
+                {
+                    //Did this one
+                }
+                else
+                {
+                    net.OutputLayer.neurons[i].Error = 0 - net.OutputLayer.neurons[i].Output; //skal kigges
+                }
+            }
+            CalculateHiddenError();
+        }
+        private void CalculateHiddenError()
+        {
+            for (int i = 0; i < net.HiddenLayer.neurons.Count; i++)
+            {
+                double error = 0;
+                for (int j = 0; j < net.OutputLayer.neurons.Count; j++)
+                {
+                    error += net.OutputLayer.neurons[j].Error * net.OutputLayer.neurons[j].Input[i].Weight;
+                }
+                net.HiddenLayer.neurons[i].Error = error * SigmoidDerivative(net.HiddenLayer.neurons[i].Output);
+            }
+            AdjustOutputWeight();
+        }
+        private void AdjustOutputWeight()
+        {
+            for (int i = 0; i < net.OutputLayer.neurons.Count; i++)
+            {
+                double deltaOutputSum = SigmoidDerivative(net.OutputLayer.neurons[i].Output) * net.OutputLayer.neurons[i].Error;
+                for (int j = 0; j < net.OutputLayer.neurons[i].Input.Count; j++)
+                {
+                    net.OutputLayer.neurons[i].Adjustments.Add(deltaOutputSum * net.HiddenLayer.neurons[j].Output);
+                }
+            }
+            for (int x = 0; x < net.OutputLayer.neurons.Count; x++)
+            {
+                net.OutputLayer.neurons[x].AdjustWeights();
+            }
+            AdjustHiddenWeight();
+        }
+        private void AdjustHiddenWeight()
+        {
+            for (int i = 0; i < net.HiddenLayer.neurons.Count; i++)
+            {
+                for (int j = 0; j < net.HiddenLayer.neurons[i].Input.Count; j++)
+                {
+                    net.HiddenLayer.neurons[i].Adjustments.Add(net.HiddenLayer.neurons[i].Error * net.HiddenLayer.neurons[i].Input[j].Input.Output);
+                }
+            }
+            for (int i = 0; i < net.HiddenLayer.neurons.Count; i++)
+            {
+                net.HiddenLayer.neurons[i].AdjustWeights();
+            }
+        }
+        
         private double SigmoidDerivative(double value)
         {
             return value * (1.0 - value);
