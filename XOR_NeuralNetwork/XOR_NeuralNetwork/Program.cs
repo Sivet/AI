@@ -96,10 +96,10 @@ namespace XOR_NeuralNetwork
             result = net.OutputLayer.neurons[testNeuron].GetOutput() > .5;
 
             Console.WriteLine("Input: " + input[0] + " " + input[1]);
-            Console.WriteLine("The actual result: " + result.ToString());
             Console.WriteLine("Neuron 0 Output: " + net.OutputLayer.neurons[0].GetOutput());
             Console.WriteLine("Neuron 1 Output: " + net.OutputLayer.neurons[1].GetOutput());
-            Console.WriteLine("Test Neuron " + testNeuron + " Error: " + net.OutputLayer.neurons[testNeuron].Error);
+            Console.WriteLine("Neuron 0 Error: " + net.OutputLayer.neurons[0].Error);
+            Console.WriteLine("Neuron 1 Error: " + net.OutputLayer.neurons[1].Error);
             Console.WriteLine("");
             return result;
         }

@@ -39,6 +39,7 @@ namespace XOR_NeuralNetwork
         }
         public void AdjustWeights()
         {
+            Bias += Error;
             for (int i = 0; i < Input.Count; i++)
             {
                 Input[i].AdjustWeight(Adjustments[i] * Learningrate);
