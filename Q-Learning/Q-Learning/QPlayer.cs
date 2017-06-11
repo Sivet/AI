@@ -24,7 +24,7 @@ namespace Q_Learning
         public void Play()
         {
             int boardstate = board.getHashedBoard();
-            if (MoveBank.ContainsKey(boardstate)) //If we know this boardstate, find and do the best move we know
+            if (MoveBank.ContainsKey(boardstate)) //If we know this boardstate, pick and do the best move
             {
                 List<Action> SortedList = MoveBank[boardstate].possibleMoves.OrderBy(o => o.point).ToList();
                 SortedList.Reverse();
@@ -32,7 +32,7 @@ namespace Q_Learning
 
                 ActionsTaken.Add(SortedList[0]);
             }
-            else //If we don't know this boardstate make a new random move, and add it to the bank
+            else //If we don't know this boardstate make a random move, and add the boardstate to the bank
             {
                 Q_Node Qnode = new Q_Node(board.getHashedBoard(), board.getPossibleMoves(playerMe));
                 MoveBank.Add(board.getHashedBoard(), Qnode);

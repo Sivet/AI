@@ -18,10 +18,10 @@ namespace XOR_NeuralNetwork
         }
         public void Run()
         {
-            int seed = 2;
+            int seed = 5;
 
-            //net.Init(seed, 2, 3, 1);
-            net.Init(seed, 2, 2, 2);
+            net.Init(seed, 2, 3, 1);
+            //net.Init(seed, 2, 2, 2);
 
             double high = .9;
             double low = 0.01;
@@ -40,15 +40,15 @@ namespace XOR_NeuralNetwork
 
             for (int i = 0; i < 100; i++)
             {
-                //PrintOut(input[0], output[0]);
-                //PrintOut(input[1], output[1]);
-                //PrintOut(input[2], output[2]);
-                //PrintOut(input[3], output[3]);
+                PrintOut(input[0], output[0]);
+                PrintOut(input[1], output[1]);
+                PrintOut(input[2], output[2]);
+                PrintOut(input[3], output[3]);
 
-                PrintOut2(input[0], output[0]);
-                PrintOut2(input[1], output[1]);
-                PrintOut2(input[2], output[2]);
-                PrintOut2(input[3], output[3]);
+                //PrintOut2(input[0], output[0]);
+                //PrintOut2(input[1], output[1]);
+                //PrintOut2(input[2], output[2]);
+                //PrintOut2(input[3], output[3]);
             }
 
             Console.ReadKey();
