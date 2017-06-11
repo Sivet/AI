@@ -22,7 +22,7 @@ namespace Q_Learning
             RandomPlayer player2 = new RandomPlayer(board, 2);
             QPlayer player1 = new QPlayer(board, 1);
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 int turnCounter = 0;
                 while (board.checkForWin(turnCounter) == -1)
