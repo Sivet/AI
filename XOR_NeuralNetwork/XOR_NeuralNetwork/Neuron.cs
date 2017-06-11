@@ -12,7 +12,7 @@ namespace XOR_NeuralNetwork
         public double Output { get; set; }
         public double Sum { get; set; }
         public double Error { get; set; }
-        public double Bias { get; set; } //De fleste bruger en Bias
+        public double Bias { get; set; }
         public double Learningrate { get; set; }
 
         public List<Connection> Input = new List<Connection>();
