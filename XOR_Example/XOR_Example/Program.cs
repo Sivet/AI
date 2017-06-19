@@ -107,7 +107,7 @@ namespace XOR_Example
                 hiddenNeuron2.adjustWeights();
             }
 
-            if (epoch < 2000)
+            if (epoch < 1000)
                 goto Retry;
 
             Console.ReadLine();
